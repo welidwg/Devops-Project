@@ -1,5 +1,10 @@
 pipeline {
     agent any
+
+    environment {
+        NODEJS_HOME = tool 'node15'
+        PATH="${NODEJS_HOME}/bin:${PATH}"
+    }
  
     stages {
         stage('Install Dependencies') {
