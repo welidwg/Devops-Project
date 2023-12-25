@@ -42,10 +42,10 @@ pipeline {
         stage('Build docker'){
             steps{
                 dir('client') {         
-                    sh 'docker build -t $DOCKERHUB_CREDENTIALS_USR/devops-project-client:$BUILD_ID .'   
+                    sh 'docker build -t $DOCKERHUB_CREDENTIALS_USR/client:$BUILD_ID .'   
                 }
                  dir('backend') {         
-                    sh 'docker build -t $DOCKERHUB_CREDENTIALS_USR/devops-project-backend:$BUILD_ID .'   
+                    sh 'docker build -t $DOCKERHUB_CREDENTIALS_USR/backend:$BUILD_ID .'   
                 }          
             }
         }
