@@ -5,12 +5,10 @@ pipeline {
         NODEJS_HOME = tool 'node16'
         PATH="${NODEJS_HOME}/bin:${PATH}"
         DOCKERHUB_CREDENTIALS = credentials('dh_cred')
-        FRONTEND_IMAGE_NAME = 'welidwg/client-image'
-        BACKEND_IMAGE_NAME = 'welidwg/backend-image'
     }
  
     stages {
-        stage('Install Dependencies') {
+        /*stage('Install Dependencies') {
             steps {
                 script {
                     def frontendPath = 'client'
@@ -25,15 +23,15 @@ pipeline {
                     }
                 }
             }
-        }
+        }*/
 
-        stage('Build') {
+        /*stage('Build') {
             steps {
                 dir('client') {         
                         sh 'CI=false npm run build'     
                 }
             }
-        }
+        }*/
 
         stage('Init docker'){
             steps{
@@ -55,10 +53,10 @@ pipeline {
         stage('Deliver docker'){
             steps{
                 dir('client') {         
-                    sh 'docker push $DOCKERHUB_CREDENTIALS_USR/devops-project-client:$BUILD_ID'   
+                    sh 'docker push $DOCKERHUB_CREDENTIALS_USR/devops-client:$BUILD_ID'   
                 }
                 dir('backend') {         
-                    sh 'docker push $DOCKERHUB_CREDENTIALS_USR/devops-project-backend:$BUILD_ID'   
+                    sh 'docker push $DOCKERHUB_CREDENTIALS_USR/devops-backend:$BUILD_ID'   
                 }      
             }
         }
