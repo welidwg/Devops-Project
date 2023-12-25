@@ -13,7 +13,7 @@ spec:
         app: client
     spec:
       containers:
-        - name: devops-project-client
-          image: welidwg/devops-project-client:12 
+        - name: client
+          image: welidwg/client:16
           ports:
             - containerPort: 3000  

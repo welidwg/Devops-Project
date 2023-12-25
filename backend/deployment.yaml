@@ -13,7 +13,7 @@ spec:
         app: backend
     spec:
       containers:
-        - name: devops-project-backend
-          image: welidwg/devops-project-backend:12 
+        - name: backend
+          image: welidwg/backend:16 
           ports:
             - containerPort: 3001 
