@@ -14,4 +14,4 @@ RUN chmod +x start.sh
 
 EXPOSE 3001
 
-CMD ["./start.sh"]
+CMD ["node","gateway.js"]
