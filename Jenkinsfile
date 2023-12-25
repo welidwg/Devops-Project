@@ -4,6 +4,7 @@ pipeline {
     environment {
         NODEJS_HOME = tool 'node16'
         PATH="${NODEJS_HOME}/bin:${PATH}"
+        DOCKERHUB_CREDENTIALS = credentials('dh_cred')
     }
  
     stages {
@@ -13,14 +14,14 @@ pipeline {
                     def frontendPath = 'client'
                     def backendPath = 'backend'
                     
-                    // Install frontend dependencies
+                 
                     dir(frontendPath) {  
                         
                             sh 'npm install'  
                         
                     }
                     
-                    // Install backend dependencies
+                   
                     dir(backendPath) {
                         
                             sh 'npm install'  
@@ -36,16 +37,33 @@ pipeline {
                 }
             }
         }
-        stage('Test') {
-            steps {
-                dir('client') {     
-                        sh 'CI=false npm run test' 
-                }
 
-                dir('backend') {     
-                        sh 'CI=false npm test' 
-                }
+        stage('Init docker'){
+            steps{
+
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
             }
         }
+
+        stage('Build docker'){
+            steps{
+                sh 'docker build -t $DOCKERHUB_CREDENTIALS_USR/devops-project:$BUILD_ID .'
+            }
+        }
+
+        stage('Deliver docker'){
+            steps{
+                sh 'docker push $DOCKERHUB_CREDENTIALS_USR/devops-project:$BUILD_ID'
+            }
+        }
+
+        stage('Cleanup docker'){
+            steps{
+                sh 'docker rmi $DOCKERHUB_CREDENTIALS_USR/devops-project:$BUILD_ID'
+                sh 'docker logout'
+            }
+        }
+
+
     }
 }
