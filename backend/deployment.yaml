@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-new-deployment
+spec:
+  replicas: 5  
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: devops-project-backend
+          image: welidwg/devops-project-backend:12 
+          ports:
+            - containerPort: 3001 

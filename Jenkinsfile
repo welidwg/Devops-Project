@@ -53,10 +53,10 @@ pipeline {
         stage('Deliver docker'){
             steps{
                 dir('client') {         
-                    sh 'docker push $DOCKERHUB_CREDENTIALS_USR/devops-client:$BUILD_ID'   
+                    sh 'docker push $DOCKERHUB_CREDENTIALS_USR/client:$BUILD_ID'   
                 }
                 dir('backend') {         
-                    sh 'docker push $DOCKERHUB_CREDENTIALS_USR/devops-backend:$BUILD_ID'   
+                    sh 'docker push $DOCKERHUB_CREDENTIALS_USR/backend:$BUILD_ID'   
                 }      
             }
         }
@@ -64,10 +64,10 @@ pipeline {
         stage('Cleanup docker'){
             steps{
                 dir('client') {         
-                    sh 'docker rmi $DOCKERHUB_CREDENTIALS_USR/devops-project-client:$BUILD_ID'   
+                    sh 'docker rmi $DOCKERHUB_CREDENTIALS_USR/client:$BUILD_ID'   
                 }
                 dir('backend') {         
-                    sh 'docker rmi $DOCKERHUB_CREDENTIALS_USR/devops-project-backend:$BUILD_ID'   
+                    sh 'docker rmi $DOCKERHUB_CREDENTIALS_USR/backend:$BUILD_ID'   
                 }  
                 sh 'docker logout'
             }
