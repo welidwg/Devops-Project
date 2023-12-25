@@ -8,6 +8,10 @@ RUN npm install
 
 COPY . .
 
+COPY start.sh .
+
+RUN chmod +x start.sh
+
 EXPOSE 3001
 
-CMD ["nodemon", ["gateway.js","microservices/userMicroService.js","nodemon microservices/productMicroService.js","nodemon microservices/cartMicroService.js"]]
+CMD ["./start.sh"]
