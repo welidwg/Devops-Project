@@ -55,10 +55,10 @@ pipeline {
         stage('Deliver docker'){
             steps{
                 dir('client') {         
-                    sh 'docker push $DOCKERHUB_CREDENTIALS_USR/devops-project-client:$BUILD_ID .'   
+                    sh 'docker push $DOCKERHUB_CREDENTIALS_USR/devops-project-client:$BUILD_ID'   
                 }
                 dir('backend') {         
-                    sh 'docker push $DOCKERHUB_CREDENTIALS_USR/devops-project-backend:$BUILD_ID .'   
+                    sh 'docker push $DOCKERHUB_CREDENTIALS_USR/devops-project-backend:$BUILD_ID'   
                 }      
             }
         }
