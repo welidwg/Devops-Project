@@ -31,20 +31,19 @@ pipeline {
         }
         stage('Build') {
             steps {
-                dir('client') {
-                   
-                        sh 'CI=false npm run build'
-                   
-                    
+                dir('client') {         
+                        sh 'CI=false npm run build'     
                 }
             }
         }
         stage('Test') {
             steps {
-                dir('backend') {
-                    
-                        sh 'CI=false npm test'
-                   
+                dir('client') {     
+                        sh 'CI=false npm run test' 
+                }
+
+                dir('backend') {     
+                        sh 'CI=false npm test' 
                 }
             }
         }
