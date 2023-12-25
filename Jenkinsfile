@@ -45,7 +45,6 @@ pipeline {
                     
                         sh 'CI=false npm test'
                    
-                
                 }
             }
         }
