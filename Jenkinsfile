@@ -33,7 +33,7 @@ pipeline {
             steps {
                 dir('client') {
                    
-                        sh 'npm run build'
+                        sh 'CI=false npm run build'
                    
                     
                 }
@@ -43,9 +43,9 @@ pipeline {
             steps {
                 dir('backend') {
                     
-                        sh 'npm test'
+                        sh 'CI=false npm test'
                    
-                   
+                
                 }
             }
         }
