@@ -41,31 +41,31 @@ pipeline {
 
         stage('Build docker'){
             steps{
-                dir('client') {         
-                    sh 'docker build -t $DOCKERHUB_CREDENTIALS_USR/client:$BUILD_ID .'   
-                }
+               // dir('client') {         
+               //     sh 'docker build -t $DOCKERHUB_CREDENTIALS_USR/client:$BUILD_ID .'   
+                // }
                  dir('backend') {         
-                    sh 'docker build -t $DOCKERHUB_CREDENTIALS_USR/backend:$BUILD_ID .'   
+                    sh 'docker build -t $DOCKERHUB_CREDENTIALS_USR/backend-final:$BUILD_ID .'   
                 }          
             }
         }
 
         stage('Deliver docker'){
             steps{
-                dir('client') {         
-                    sh 'docker push $DOCKERHUB_CREDENTIALS_USR/client:$BUILD_ID'   
-                }
+                // dir('client') {         
+               //      sh 'docker push $DOCKERHUB_CREDENTIALS_USR/client:$BUILD_ID'   
+               // }
                 dir('backend') {         
-                    sh 'docker push $DOCKERHUB_CREDENTIALS_USR/backend:$BUILD_ID'   
+                    sh 'docker push $DOCKERHUB_CREDENTIALS_USR/backend-final:$BUILD_ID'   
                 }      
             }
         }
 
         stage('Cleanup docker'){
             steps{
-                dir('client') {         
-                    sh 'docker rmi $DOCKERHUB_CREDENTIALS_USR/client:$BUILD_ID'   
-                }
+                // dir('client') {         
+                //     sh 'docker rmi $DOCKERHUB_CREDENTIALS_USR/client:$BUILD_ID'   
+                // }
                 dir('backend') {         
                     sh 'docker rmi $DOCKERHUB_CREDENTIALS_USR/backend:$BUILD_ID'   
                 }  

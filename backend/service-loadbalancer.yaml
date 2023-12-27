@@ -4,7 +4,7 @@ metadata:
   name: backend-load-service
 spec:
   selector:
-    app: backend
+    app: backend-final
   ports:
     - protocol: TCP
       port: 80
