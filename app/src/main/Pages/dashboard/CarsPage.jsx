@@ -44,8 +44,7 @@ export default function CarsPage(props) {
     <WrapperDash>
       <div
         className="card border-none rounded"
-        data-aos="zoom-in"
-        data-aos-duration="1000"
+    
       >
         <div className="card-header">
           <NavLink to={"/dash/cars/new"} className={"btn primary-btn rounded"}>

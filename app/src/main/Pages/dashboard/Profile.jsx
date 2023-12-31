@@ -63,7 +63,7 @@ export default function Profile(props) {
   };
   return (
     <WrapperDash>
-      <div className="card" data-aos="zoom-in" data-aos-duration="1000">
+      <div className="card" >
         <div className="card-header color-1 fw-bold fs-4 text-center ">
           Mon profile
         </div>

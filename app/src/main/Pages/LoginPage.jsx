@@ -42,10 +42,7 @@ export default function LoginPage(props) {
     <>
       <div
         className="container"
-        data-aos="flip-left"
-        data-aos-offset="200"
-        data-aos-easing="ease-in-sine"
-        data-aos-duration="400"
+     
       >
         <div className="row justify-content-center">
           <div className="col-md-9 col-lg-12 col-xl-10">

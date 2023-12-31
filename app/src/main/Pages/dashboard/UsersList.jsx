@@ -21,8 +21,7 @@ export default function UsersList(props) {
     <WrapperDash>
       <div
         className="card border-none rounded"
-        data-aos="zoom-in"
-        data-aos-duration="1000"
+        
       >
         <div className="card-header color-1 fw-bold fs-4  text-center">
           {/* <NavLink to={"/dash/cars/new"} className={"btn primary-btn rounded"}>
