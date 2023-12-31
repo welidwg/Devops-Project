@@ -41,10 +41,8 @@ pipeline {
 
         stage('Build docker'){
             steps{
-               // dir('client') {         
-               //     sh 'docker build -t $DOCKERHUB_CREDENTIALS_USR/client:$BUILD_ID .'   
-                // }
-                 dir('backend') {         
+               
+                 dir('app') {         
                     sh 'docker build -t $DOCKERHUB_CREDENTIALS_USR/cars-image:$BUILD_ID .'   
                 }          
             }
@@ -52,9 +50,7 @@ pipeline {
 
         stage('Deliver docker'){
             steps{
-                // dir('client') {         
-               //      sh 'docker push $DOCKERHUB_CREDENTIALS_USR/client:$BUILD_ID'   
-               // }
+               
                 dir('backend') {         
                     sh 'docker push $DOCKERHUB_CREDENTIALS_USR/cars-image:$BUILD_ID'   
                 }      
