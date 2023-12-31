@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        NODEJS_HOME = tool 'node16'
+        NODEJS_HOME = tool 'node18'
         PATH="${NODEJS_HOME}/bin:${PATH}"
         DOCKERHUB_CREDENTIALS = credentials('dh_cred')
     }
@@ -45,7 +45,7 @@ pipeline {
                //     sh 'docker build -t $DOCKERHUB_CREDENTIALS_USR/client:$BUILD_ID .'   
                 // }
                  dir('backend') {         
-                    sh 'docker build -t $DOCKERHUB_CREDENTIALS_USR/backend-final:$BUILD_ID .'   
+                    sh 'docker build -t $DOCKERHUB_CREDENTIALS_USR/cars-image:$BUILD_ID .'   
                 }          
             }
         }
@@ -56,7 +56,7 @@ pipeline {
                //      sh 'docker push $DOCKERHUB_CREDENTIALS_USR/client:$BUILD_ID'   
                // }
                 dir('backend') {         
-                    sh 'docker push $DOCKERHUB_CREDENTIALS_USR/backend-final:$BUILD_ID'   
+                    sh 'docker push $DOCKERHUB_CREDENTIALS_USR/cars-image:$BUILD_ID'   
                 }      
             }
         }
@@ -67,12 +67,11 @@ pipeline {
                 //     sh 'docker rmi $DOCKERHUB_CREDENTIALS_USR/client:$BUILD_ID'   
                 // }
                 dir('backend') {         
-                    sh 'docker rmi $DOCKERHUB_CREDENTIALS_USR/backend-final:$BUILD_ID'   
+                    sh 'docker rmi $DOCKERHUB_CREDENTIALS_USR/cars-image:$BUILD_ID'   
                 }  
                 sh 'docker logout'
             }
         }
-
 
     }
 }
