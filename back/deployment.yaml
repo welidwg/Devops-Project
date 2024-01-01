@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cars-back
+spec:
+  replicas: 1 
+  selector:
+    matchLabels:
+      app: carsBack
+  template:
+    metadata:
+      labels:
+        app: carsBack
+    spec:
+      containers:
+        - name: cars-backend
+          image: welidwg/cars-backend:23 
+          ports:
+            - containerPort: 8899  
