@@ -1,20 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cars-deployment
+  name: cars-front
 spec:
   replicas: 1 
   selector:
     matchLabels:
-      app: cars
+      app: carsFront
   template:
     metadata:
       labels:
-        app: cars
+        app: carsFront
     spec:
       containers:
         - name: cars-image
-          image: welidwg/cars-image:22 
+          image: welidwg/cars-image:23 
           ports:
             - containerPort: 5173  
-            - containerPort: 5000  
