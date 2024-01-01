@@ -44,15 +44,20 @@ pipeline {
                
                  dir('app') {         
                     sh 'docker build -t $DOCKERHUB_CREDENTIALS_USR/cars-image:$BUILD_ID .'   
-                }          
+                }     
+                dir('backend') {         
+                    sh 'docker build -t $DOCKERHUB_CREDENTIALS_USR/cars-backend:$BUILD_ID .'   
+                }       
             }
         }
 
         stage('Deliver docker'){
             steps{
-               
-                dir('backend') {         
+                dir('app') {         
                     sh 'docker push $DOCKERHUB_CREDENTIALS_USR/cars-image:$BUILD_ID'   
+                }  
+                 dir('backend') {         
+                    sh 'docker push $DOCKERHUB_CREDENTIALS_USR/cars-backend:$BUILD_ID'   
                 }      
             }
         }
@@ -62,8 +67,11 @@ pipeline {
                 // dir('client') {         
                 //     sh 'docker rmi $DOCKERHUB_CREDENTIALS_USR/client:$BUILD_ID'   
                 // }
-                dir('backend') {         
+                dir('app') {         
                     sh 'docker rmi $DOCKERHUB_CREDENTIALS_USR/cars-image:$BUILD_ID'   
+                }  
+                 dir('backend') {         
+                    sh 'docker rmi $DOCKERHUB_CREDENTIALS_USR/cars-backend:$BUILD_ID'   
                 }  
                 sh 'docker logout'
             }
