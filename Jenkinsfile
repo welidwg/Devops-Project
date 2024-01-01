@@ -45,7 +45,7 @@ pipeline {
                  dir('app') {         
                     sh 'docker build -t $DOCKERHUB_CREDENTIALS_USR/cars-image:$BUILD_ID .'   
                 }     
-                dir('backend') {         
+                dir('back') {         
                     sh 'docker build -t $DOCKERHUB_CREDENTIALS_USR/cars-backend:$BUILD_ID .'   
                 }       
             }
@@ -56,7 +56,7 @@ pipeline {
                 dir('app') {         
                     sh 'docker push $DOCKERHUB_CREDENTIALS_USR/cars-image:$BUILD_ID'   
                 }  
-                 dir('backend') {         
+                 dir('back') {         
                     sh 'docker push $DOCKERHUB_CREDENTIALS_USR/cars-backend:$BUILD_ID'   
                 }      
             }
@@ -70,7 +70,7 @@ pipeline {
                 dir('app') {         
                     sh 'docker rmi $DOCKERHUB_CREDENTIALS_USR/cars-image:$BUILD_ID'   
                 }  
-                 dir('backend') {         
+                 dir('back') {         
                     sh 'docker rmi $DOCKERHUB_CREDENTIALS_USR/cars-backend:$BUILD_ID'   
                 }  
                 sh 'docker logout'
