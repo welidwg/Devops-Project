@@ -1,19 +1,15 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: cars-nodeport-service
+  name: cars-frontend-service
   labels:
-    app: cars
+    app: carsFront
 spec:
   type: NodePort
   ports:
     - name: http
       port: 80
-      targetPort: 5173  # Use port 5173 for the main application
-      nodePort: 31000   # The port accessible externally on your Minikube VM
-    - name: backend
-      port: 5000
-      targetPort: 5000  # Use port 5000 for the secondary service
-      nodePort: 31001   # The port accessible externally on your Minikube VM
+      targetPort: 5173 
+      
   selector:
-    app: cars
+    app: carsFront

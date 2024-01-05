@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: cars-backend
-          image: welidwg/cars-backend:23 
+          image: welidwg/cars-backend:24
           ports:
             - containerPort: 8899  

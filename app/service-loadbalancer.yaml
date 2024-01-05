@@ -1,16 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: cars-loadbalancer-service
+  name: cars-front-loadbalancer-service
   labels:
-    app: cars
+    app: carsFront
 spec:
   type: LoadBalancer
   ports:
-    - name: frontend-http
+    - protocol: TCP
       port: 80
-      targetPort: 5173  # Port for the frontend (React)
-    - name: backend-http
-      port: 5000  # Port for the backend (Node.js)
+      targetPort: 5173
   selector:
-    app: cars
+    app: carsFront

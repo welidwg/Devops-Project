@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: cars-backend-service
+  labels:
+    app: carsBack
+spec:
+  type: LoadBalancer
+  ports:
+    - name: backend-http
+      port: 8899
+  selector:
+    app: carsBack
