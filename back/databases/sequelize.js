@@ -1,7 +1,7 @@
 import { Sequelize } from "sequelize";
 const sequelize = new Sequelize({
     database: "cars",
-    username: "phpmyadmin",
+    username: "root",
     password: "root",
     host: "127.0.0.1",
     dialect: "mysql",
