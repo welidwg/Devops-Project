@@ -3,7 +3,7 @@ const sequelize = new Sequelize({
     database: "cars",
     username: "root",
     password: "root",
-    host: "127.0.0.1",
+    host: "mysql",
     dialect: "mysql",
     port: 3306
 });
