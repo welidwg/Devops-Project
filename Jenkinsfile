@@ -2,7 +2,6 @@ pipeline {
     agent any
 
     environment {
-        NODEJS_HOME = tool 'node18'
         PATH="${NODEJS_HOME}/bin:${PATH}"
         DOCKERHUB_CREDENTIALS = credentials('dh_cred')
     }
