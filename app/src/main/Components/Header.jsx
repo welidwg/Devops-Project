@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
+import {AUTH_TOKEN} from "../../constants.js"
 export default function Header(props) {
   return (
     <>
@@ -13,11 +14,12 @@ export default function Header(props) {
                   <span>Trouvez votre voiture de rêve Chez</span>
                   <h2 className=""> AUTOBOT</h2>
                 </div>
+                {AUTH_TOKEN && 
 
                 <NavLink to={"/register"} href="#" className="primary-btn">
                   <i className="fa fa-user-plus" aria-hidden="true"></i> Créer
                   un compte
-                </NavLink>
+                </NavLink>}
                 <a href="#" className="primary-btn more-btn">
                   <i className="fa fa-question-circle" aria-hidden="true"></i>{" "}
                   En savoir plus
