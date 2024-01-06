@@ -56,10 +56,10 @@ pipeline {
             steps{
           
                 dir('app') {         
-                    sh 'docker rmi $DOCKERHUB_CREDENTIALS_USR/cars-image:$BUILD_ID'   
+                    sh 'docker rmi $DOCKERHUB_CREDENTIALS_USR/cars-image:latest'   
                 }  
                  dir('back') {         
-                    sh 'docker rmi $DOCKERHUB_CREDENTIALS_USR/cars-backend:$BUILD_ID'   
+                    sh 'docker rmi $DOCKERHUB_CREDENTIALS_USR/cars-backend:latest'   
                 }  
                 sh 'docker logout'
             }
