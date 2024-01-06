@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: cars-image
-          image: welidwg/cars-image:latest 
+          image: welidwg/cars-image:15 
           ports:
             - containerPort: 5173  

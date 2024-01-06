@@ -1,23 +1,23 @@
 import express from "express";
 import {
-  createCar,
-  getAllCars,
-  getCarById,
-  updateCarById,
-  deleteCarById,
-  getCarByOwnerId,
+    createCar,
+    getAllCars,
+    getCarById,
+    updateCarById,
+    deleteCarById,
+    getCarByOwnerId,
 } from "../controllers/CarsController.js";
 import multer from "multer";
 import path from "path";
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "server/uploads/cars/");
-  },
-  filename: (req, file, cb) => {
-    const ext = path.extname(file.originalname);
-    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
-    cb(null, file.fieldname + "-" + uniqueSuffix + ext);
-  },
+    destination: (req, file, cb) => {
+        cb(null, "/uploads/cars/");
+    },
+    filename: (req, file, cb) => {
+        const ext = path.extname(file.originalname);
+        const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
+        cb(null, file.fieldname + "-" + uniqueSuffix + ext);
+    },
 });
 const upload = multer({ storage: storage }); // Use default settings
 

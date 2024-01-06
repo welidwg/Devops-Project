@@ -1,4 +1,3 @@
-#service
 apiVersion: v1
 kind: Service
 metadata:
@@ -9,14 +8,13 @@ spec:
     targetPort: 3306
   selector:
     app: mysql
-
-#deployment
-
-apiVersion: v1
+  # Removed the line 'clusterIP: None' to use a standard ClusterIP service
+---
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mysql
-spec: 
+spec:
   selector:
     matchLabels:
       app: mysql
@@ -31,11 +29,10 @@ spec:
       - image: mysql:5.7
         name: mysql
         env:
-        - name: MYSQL_DATABASE 
+        - name: MYSQL_DATABASE
           value: cars
-        - name: MYSQL_ROOT_PASSWORD 
-          value: "root"
+        - name: MYSQL_ROOT_PASSWORD
+          value: "root" 
         ports:
         - containerPort: 3306
-        name: mysql
-
+          name: mysql
