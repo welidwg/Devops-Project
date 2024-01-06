@@ -38,7 +38,7 @@ pipeline {
             }
         }
 
-        stage('Deploy to kubernate'){
+        /*stage('Deploy to kubernate'){
             steps{
                 dir('app') {         
                     sh 'kubectl apply -f deployment.yaml'   
@@ -50,7 +50,7 @@ pipeline {
                 }
                 sh 'kubectl apply -f mysql.yaml'         
             }
-        }
+        }*/
 
         stage('Cleanup docker'){
             steps{
