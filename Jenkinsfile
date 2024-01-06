@@ -19,10 +19,10 @@ pipeline {
             steps{
                
                  dir('app') {         
-                    sh 'docker build -t $DOCKERHUB_CREDENTIALS_USR/cars-image:$BUILD_ID .'   
+                    sh 'docker build -t $DOCKERHUB_CREDENTIALS_USR/cars-image:latest .'   
                 }     
                 dir('back') {         
-                    sh 'docker build -t $DOCKERHUB_CREDENTIALS_USR/cars-backend:$BUILD_ID .'   
+                    sh 'docker build -t $DOCKERHUB_CREDENTIALS_USR/cars-backend:latest .'   
                 }       
             }
         }
@@ -30,10 +30,10 @@ pipeline {
         stage('Deliver docker'){
             steps{
                 dir('app') {         
-                    sh 'docker push $DOCKERHUB_CREDENTIALS_USR/cars-image:$BUILD_ID'   
+                    sh 'docker push $DOCKERHUB_CREDENTIALS_USR/cars-image:latest'   
                 }  
                  dir('back') {         
-                    sh 'docker push $DOCKERHUB_CREDENTIALS_USR/cars-backend:$BUILD_ID'   
+                    sh 'docker push $DOCKERHUB_CREDENTIALS_USR/cars-backend:latest'   
                 }      
             }
         }
