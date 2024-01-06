@@ -7,30 +7,7 @@ pipeline {
     }
  
     stages {
-        /*stage('Install Dependencies') {
-            steps {
-                script {
-                    def frontendPath = 'client'
-                    def backendPath = 'backend'
-                    
-                    dir(frontendPath) {     
-                            sh 'npm install'      
-                    }
-                    
-                    dir(backendPath) {                     
-                            sh 'npm install'               
-                    }
-                }
-            }
-        }*/
-
-        /*stage('Build') {
-            steps {
-                dir('client') {         
-                        sh 'CI=false npm run build'     
-                }
-            }
-        }*/
+   
 
         stage('Init docker'){
             steps{
@@ -61,11 +38,23 @@ pipeline {
             }
         }
 
+        stage('Deploy to kubernate'){
+            steps{
+                dir('app') {         
+                    sh 'kubectl apply -f deployment.yaml'   
+                    sh 'kubectl apply -f service-nodeport.yaml'   
+                }  
+                 dir('back') {         
+                    sh 'kubectl apply -f deployment.yaml'   
+                    sh 'kubectl apply -f service.yaml'    
+                }
+                sh 'kubectl apply -f mysql.yaml'         
+            }
+        }
+
         stage('Cleanup docker'){
             steps{
-                // dir('client') {         
-                //     sh 'docker rmi $DOCKERHUB_CREDENTIALS_USR/client:$BUILD_ID'   
-                // }
+          
                 dir('app') {         
                     sh 'docker rmi $DOCKERHUB_CREDENTIALS_USR/cars-image:$BUILD_ID'   
                 }  
