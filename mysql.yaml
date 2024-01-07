@@ -8,7 +8,31 @@ spec:
     targetPort: 3306
   selector:
     app: mysql
-  # Removed the line 'clusterIP: None' to use a standard ClusterIP service
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mysql-pv
+spec:
+  capacity:
+    storage: 1Gi  # Adjust the size as needed
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/data/mysql-data"  # Adjust the host path as needed
+ 
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi 
 ---
 apiVersion: apps/v1
 kind: Deployment

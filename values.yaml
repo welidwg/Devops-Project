@@ -1,0 +1,30 @@
+server:
+  retention: 24h
+  scrapeInterval: 15s
+
+alertmanager:
+  enabled: false
+
+prometheusRuleSelector:
+  release: prometheus
+
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+            - alertmanager:9093
+
+service:
+  type: ClusterIP
+  port: 9090
+
+ingress:
+  enabled: false
+  # Set to true if you want to use Ingress
+  # Add Ingress annotations and hosts if enabled.
+
+nodeExporter:
+  enabled: true
+
+kubeStateMetrics:
+  enabled: true

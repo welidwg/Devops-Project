@@ -1,0 +1,37 @@
+adminUser: admin
+adminPassword: admin
+# You should change the admin password to a secure value.
+
+service:
+  type: ClusterIP
+  port: 80
+  annotations:
+    # Add any service annotations if needed.
+
+ingress:
+  enabled: false
+  # Set to true if you want to use Ingress
+  # Add Ingress annotations and hosts if enabled.
+
+datasources:
+  datasources.yaml:
+    apiVersion: 1
+    datasources:
+      - name: Prometheus
+        type: prometheus
+        access: proxy
+        url: http://prometheus-server
+        # Adjust the URL based on your Prometheus service name
+
+dashboardProviders:
+  dashboardproviders.yaml:
+    apiVersion: 1
+    providers:
+      - name: "default"
+        orgId: 1
+        folder: ""
+        type: file
+        disableDeletion: false
+        editable: true
+        options:
+          path: /var/lib/grafana/dashboards

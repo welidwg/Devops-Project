@@ -37,6 +37,17 @@ pipeline {
                 }      
             }
         }
+           stage('Test Backend') {
+            steps {
+                 dir('app') {         
+                    //sh 'docker run --rm $DOCKERHUB_CREDENTIALS_USR/cars-image:latest npm test'  
+                } 
+                 dir('back') {         
+                    //sh 'docker run --rm $DOCKERHUB_CREDENTIALS_USR/cars-backend:latest npm test'   
+                } 
+                
+            }
+        }
 
         /*stage('Deploy to kubernate'){
             steps{

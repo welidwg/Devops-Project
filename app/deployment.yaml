@@ -2,6 +2,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: cars-front
+  annotations:
+    prometheus.io/scrape: 'true'
+    prometheus.io/port: '5173'
 spec:
   replicas: 1 
   selector:
