@@ -44,5 +44,6 @@ kubectl apply -f phpmyadmin.yaml
 <br>
 
 ### Services:
+PS: I used port forwarding for the backend so the front could connect to localhost:5000
 <p align="center"><img src="https://github.com/welidwg/Devops-Project/blob/main/screenshots/lens_service.png" width="100%"></p>
 <br>
