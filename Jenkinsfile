@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    triggers {
+        pollSCM('*/5 * * * *') 
+        }
+
 
     environment {
         PATH="${NODEJS_HOME}/bin:${PATH}"
